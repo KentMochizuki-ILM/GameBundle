@@ -17,4 +17,4 @@ plugins {
 }
 
 rootProject.name = 'JavaPractice'
-include('app', 'list', 'utilities')
+include('main-menu', 'interface', 'games')
