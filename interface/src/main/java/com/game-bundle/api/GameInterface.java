@@ -4,6 +4,6 @@ package com.gamebundle.api;
 public interface GameInterface {
 
     //ゲームの名前の取得と実行機能
-   String getGameName();
+   String getTitle();
    void start();
 }

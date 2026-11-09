@@ -6,7 +6,7 @@ public class HighLow implements GameInterface {
 
     //ゲーム名と実行内容をオーバーライド
     @Override
-    public String getGameName() {
+    public String getTitle() {
         return "HighLowゲーム";
     }
 
