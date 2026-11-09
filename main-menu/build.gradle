@@ -12,3 +12,8 @@ application {
     // Define the main class for the application.
     mainClass = 'com.gamebundle/menu/MainMenu'
 }
+
+//入力をSystem.inへ
+run {
+	standardInput = System.in
+}
