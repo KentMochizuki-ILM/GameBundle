@@ -8,7 +8,7 @@ import com.gamebundle.games.HighLow;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameResistry {
+public class GameRegistry {
     //GameInterfaceで形式を指定
     public static List<GameInterface> createGameList() {
         //ArrayListでListの中身を生成
