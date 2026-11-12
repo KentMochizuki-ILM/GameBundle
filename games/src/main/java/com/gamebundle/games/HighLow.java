@@ -1,58 +1,53 @@
 package com.gamebundle.games;
 
 import com.gamebundle.api.GameInterface;
-import com.gamebundle.api.InputValidator;
+import com.gamebundle.api.ConsoleInput;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class HighLow implements GameInterface {
+    // HighLowゲーム固有の数値
+    private static final int DECK_SIZE = 13;
+    private static final int CHOICE_HIGH = 1;
+    private static final int CHOICE_LOW = 2;
 
-    // ゲーム名と実行内容をオーバーライド
+    // ゲーム名
     @Override
     public String getTitle() {
         return "HighLowゲーム";
     }
 
+    // ゲーム内容
     @Override
-    public void start() {
+    public void start(ConsoleInput input) {
         int countWin = 0;
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("\nHighLowゲームを開始します\n");
 
         // デッキを用意
         List<Integer> deck = createShuffleDeck();
 
+        // デッキが尽きるまで勝負
         for (int i = 0; i < deck.size() - 1; i++) {
             int currentCard = deck.get(i);
             int nextCard = deck.get(i + 1);
-            int turn = i + 1;
+            int remainingNumber = deck.size() - (i + 1);
+            String promptMessage = """
+                    次のカードは%dより高い？低い？
+                    （高い: %d/低い: %d）==>\
+                    """.formatted(currentCard, CHOICE_HIGH, CHOICE_LOW);
 
-            tableInfo(currentCard, turn, countWin);
+            printTableInfo(currentCard, remainingNumber, countWin);
 
-            System.out.printf("\n次のカードは%dより高い？低い？\n（高い: 1/低い: 2）==>", currentCard);
+            int choice = input.promptInputInt(promptMessage, CHOICE_HIGH, CHOICE_LOW);
 
-            while (true) {
-                String input = scanner.nextLine();
-
-                if (InputValidator.isValidInteger(input, deck.size(), 1)) {
-
-                    Boolean isWin = checkWin(input, currentCard, nextCard);
-
-                    if (isWin) {
-                        System.out.println("-- WIN! --\n");
-                        countWin++;
-                    } else {
-                        System.out.println("-- LOSE... --\n");
-                    }
-
-                    break;
-                } else {
-                    continue;
-                }
+            if (checkWin(choice, currentCard, nextCard)) {
+                System.out.println("-- WIN! --\n");
+                countWin++;
+            } else {
+                System.out.println("-- LOSE... --\n");
             }
         }
 
@@ -66,7 +61,7 @@ public class HighLow implements GameInterface {
     private List<Integer> createShuffleDeck() {
         List<Integer> deck = new ArrayList<>();
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < DECK_SIZE; i++) {
             deck.add(i + 1);
         }
 
@@ -74,18 +69,15 @@ public class HighLow implements GameInterface {
         return deck;
     }
 
-    private void tableInfo(int currentCard, int turn, int countWin) {
-        int deckSize = 13;
-        System.out.printf("現在のカード:%2d / 残りのカード枚数:%2d枚 / 勝利数%2d\n", currentCard, deckSize - turn, countWin);
+    private void printTableInfo(int currentCard, int reminingNumber, int countWin) {
+        System.out.printf("現在のカード:%2d / 残りのカード枚数:%2d枚 / 勝利数%2d\n", currentCard, reminingNumber, countWin);
     }
 
-    private Boolean checkWin(String input, int currentCard, int nextCard) {
+    private boolean checkWin(int choice, int currentCard, int nextCard) {
         // ユーザの入力を整数化
-        int answer = Integer.parseInt(input);
-
-        return switch (answer) {
-            case 1 -> currentCard < nextCard;
-            case 2 -> currentCard > nextCard;
+        return switch (choice) {
+            case CHOICE_HIGH -> currentCard < nextCard;
+            case CHOICE_LOW -> currentCard > nextCard;
             default -> false;
 
         };

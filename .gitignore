@@ -10,8 +10,8 @@ build
 #Eclipse関連
 **/.classpath
 **/.project
-**/.setting/
-**/bim
+**/.settings/
+**/bin
 .metadata/
 
 #OS関連

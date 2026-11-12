@@ -2,16 +2,25 @@ package com.gamebundle.menu;
 
 import com.gamebundle.games.GameRegistry;
 import com.gamebundle.api.GameInterface;
-import com.gamebundle.api.InputValidator;
+import com.gamebundle.api.ConsoleInput;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
+    private static final int QUIT_OPTION = 0;
+
     public static void main(String[] args) {
         // ゲームリストの作成
         List<GameInterface> games = GameRegistry.createGameList();
+
+        // ConsoleInputにscannerを渡す
         Scanner scanner = new Scanner(System.in);
+        ConsoleInput input = new ConsoleInput(scanner);
+        String promptMessage = """
+                遊びたいゲームの番号を入力してください
+                終了する場合は0を入力してください
+                ==>""";
 
         // メインタイトル表示
         System.out.print("""
@@ -19,57 +28,41 @@ public class MainMenu {
                 ミニゲームコレクション
                 ---------------------
                 """);
-
         while (true) {
-            // メニューを表示
             printMenu(games);
 
-            // まず文字列として入力を受け取る
-            String input = scanner.nextLine();
+            int choice = input.promptInputInt(promptMessage, QUIT_OPTION, games.size());
 
-            // 入力をチェク
-            if (InputValidator.isValidInteger(input, games.size(), 0)) {
-                // 指定されたシステム実行
-                Boolean shouldExit = handleMenuInput(input, games);
+            boolean shouldQuit = handleMenuInput(choice, games, input);
 
-                // 0ならシステム終了
-                if (shouldExit) {
-                    break;
-                }
+            if (shouldQuit) {
+                break;
             }
         }
     }
 
-    // メニュー表示機能
+    // ゲームタイトル表示機能
     private static void printMenu(List<GameInterface> games) {
         StringBuilder gameTitles = new StringBuilder();
 
-        // タイトルを表示
         for (int i = 0; i < games.size(); i++) {
             GameInterface game = games.get(i);
             gameTitles.append("   |%d:   %-20s\n".formatted(i + 1, game.getTitle()));
         }
         System.out.println(gameTitles.toString());
 
-        System.out.print("""
-                遊びたいゲームの番号を入力してください
-                終了する場合は0を入力してください
-                ==>""");
     }
 
     // システム実行機能
-    private static Boolean handleMenuInput(String input, List<GameInterface> games) {
-        // ユーザの入力を整数化
-        int choice = Integer.parseInt(input);
-
-        if (choice == 0) {
-            // 0ならシステム終了
+    private static boolean handleMenuInput(int choice, List<GameInterface> games, ConsoleInput input) {
+        if (choice == QUIT_OPTION) {
+            // 0（終了）ならゲームを実行せずtrueを返す
             System.out.println("\nシステムを終了します");
             return true;
         } else {
-            // ゲームプログラム実行
+            // ゲーム実行
             GameInterface selectedGame = games.get(choice - 1);
-            selectedGame.start();
+            selectedGame.start(input);
         }
 
         return false;

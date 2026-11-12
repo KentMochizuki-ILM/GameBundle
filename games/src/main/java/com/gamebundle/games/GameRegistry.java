@@ -1,9 +1,6 @@
 package com.gamebundle.games;
 
 import com.gamebundle.api.GameInterface;
-import com.gamebundle.games.HighLow;
-//仮置きのゲーム
-//import com.gamebundle.games.ExampleGame;
 
 import java.util.ArrayList;
 import java.util.List;
