@@ -1,6 +1,6 @@
 package com.gamebundle.menu;
 
-import com.gamebundle.menu.GameRegistry;
+import com.gamebundle.games.GameRegistry;
 import com.gamebundle.api.GameInterface;
 import com.gamebundle.api.InputValidator;
 

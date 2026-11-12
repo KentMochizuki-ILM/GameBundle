@@ -10,7 +10,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.gamebundle/menu/MainMenu'
+    mainClass = 'com.gamebundle.menu.MainMenu'
 }
 
 //入力をSystem.inへ

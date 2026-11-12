@@ -1,4 +1,4 @@
-package com.gamebundle.menu;
+package com.gamebundle.games;
 
 import com.gamebundle.api.GameInterface;
 import com.gamebundle.games.HighLow;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameRegistry {
-    //GameInterfaceで形式を指定
+    // GameInterfaceで形式を指定
     public static List<GameInterface> createGameList() {
-        //ArrayListでListの中身を生成
+        // ArrayListでListの中身を生成
         List<GameInterface> games = new ArrayList<>();
 
-        //ゲームをListに追加
+        // ゲームをListに追加
         games.add(new HighLow());
-        //games.add(new ExampleGame_2());
+        // games.add(new ExampleGame_2());
 
         return games;
     }
