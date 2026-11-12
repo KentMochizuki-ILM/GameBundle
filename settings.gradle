@@ -16,5 +16,5 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
 }
 
-rootProject.name = 'JavaPractice'
+rootProject.name = 'java_practice'
 include('main-menu', 'api', 'games')

@@ -43,7 +43,10 @@ public class HighLow implements GameInterface {
                     Boolean isWin = checkWin(input, currentCard, nextCard);
 
                     if (isWin) {
+                        System.out.println("-- WIN! --\n");
                         countWin++;
+                    } else {
+                        System.out.println("-- LOSE... --\n");
                     }
 
                     break;
