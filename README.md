@@ -62,7 +62,7 @@ graph TD
 ### リポジトリのクローンと移動
 ターミナル（またはコマンドプロンプト）を開き、以下のコマンドでリポジトリをクローンしてプロジェクトディレクトリへ移動します。
 ```bash
-git clone https://github.com
+git clone https://github.com/KentMochizuki-ILM/GameBundle
 cd GameBundle
 ```
 
