@@ -61,7 +61,7 @@ graph TD
 
 ### アプリケーションの起動
 ```bash
-./gradlew :main-menu:run --console=plain
+./gradlew :main-menu:run
 ```
 ※Windows（コマンドプロンプト / PowerShell）の場合は `./gradlew` を `gradlew.bat` に置き換えてください。
 ### ビルドおよびテストの実行
