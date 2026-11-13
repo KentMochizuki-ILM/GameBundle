@@ -110,7 +110,8 @@ HighLowゲームを開始します
 
 ## 7. 今後の展望（ロードマップ）
 
-* [ ] 単体テスト（JUnit Jupiter）の拡充（`InputValidator` の境界値テスト、`ConsoleInput` の擬似入力テストなど）
+* [x] 単体テスト（JUnit Jupiter）の拡充（`InputValidator` の境界値テスト、`ConsoleInput` の擬似入力テストなど）
+* [x] GitHub Actions を用いたプッシュ時の自動ビルド・テスト（CI）の導入
 * [ ] ミニゲームの追加（数当てゲーム、ブラックジャックなど）
 * [ ] `java.util.ServiceLoader` を用いた完全な動的プラグイン読み込みへの移行
 * [ ] GitHub Actions を用いたプッシュ時の自動ビルド・テスト（CI）の導入
