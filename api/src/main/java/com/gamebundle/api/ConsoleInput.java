@@ -3,9 +3,13 @@ package com.gamebundle.api;
 import java.util.Scanner;
 
 public class ConsoleInput {
-    // コンストラクタ
     private final Scanner scanner;
 
+    /*
+     * コンストラクタで依存性注入
+     * new ConsoleInput()は使えない
+     * 必ずScannerをわたす
+     */
     public ConsoleInput(Scanner scanner) {
         this.scanner = scanner;
     }

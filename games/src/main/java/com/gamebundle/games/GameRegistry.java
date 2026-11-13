@@ -2,19 +2,22 @@ package com.gamebundle.games;
 
 import com.gamebundle.api.GameInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class GameRegistry {
-    // GameInterfaceで形式を指定
+public final class GameRegistry {
+
+    // ユーティリティクラス（継承禁止、インスタンス化禁止）
+    private GameRegistry() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
+    /*
+     * GameInterfaceで形式を指定
+     * List.ofで不変リストを返す（外部から編集されないため）
+     */
     public static List<GameInterface> createGameList() {
-        // ArrayListでListの中身を生成
-        List<GameInterface> games = new ArrayList<>();
-
-        // ゲームをListに追加
-        games.add(new HighLow());
-        // games.add(new ExampleGame_2());
-
-        return games;
+        // ここにゲームを追加
+        return List.of(
+                new HighLow());
     }
 }

@@ -7,8 +7,10 @@ public final class InputValidator {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    // 検証結果を保持するrecord
-    // nullも扱えるIntegerを使用
+    /*
+     * 検証結果を保持するrecord
+     * nullも扱えるIntegerを使用
+     */
     public record ValidationResult(boolean isValid, Integer value, String errorMessage) {
         // 入力チェックをパスした場合数値を返す
         public static ValidationResult success(int value) {
@@ -42,7 +44,7 @@ public final class InputValidator {
             if (value <= max && value >= min) {
                 return ValidationResult.success(value);
             } else {
-                return ValidationResult.failure(String.format("\n%d~%dの範囲で入力してください\n", min, max));
+                return ValidationResult.failure("\n%d~%dの範囲で入力してください\n".formatted(min, max));
             }
         } catch (NumberFormatException e) {
             // 整数でなければエラー
