@@ -23,10 +23,12 @@ class InputValidatorTest {
     @Test
     @DisplayName("範囲内の有効な数字が入力されればtrueと数値を返すエラーメッセージはnull")
     void validateInteger_validNumber_returnSuccess() {
+        // 入力範囲1~10の代表値として5を入力
         var result = InputValidator.validateInteger("5", 1, 10);
 
-        assertTrue(result.isValid());
-        assertEquals(5, result.value());
-        assertNull(result.errorMessage());
+        assertAll(
+                () -> assertTrue(result.isValid()),
+                () -> assertEquals(5, result.value()),
+                () -> assertNull(result.errorMessage()));
     }
 }

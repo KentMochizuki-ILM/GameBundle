@@ -22,6 +22,19 @@ testing {
         test {
             // Use JUnit Jupiter test framework
             useJUnitJupiter('6.0.1')
+						targets{
+							all{
+								testTask.configure{
+									testLogging{
+										events"passed", "failed", "skipped", "standardOut", "StandardError"
+										exceptionFormat "full"
+										showExceptions true
+										showCauses true
+										showStackTraces true
+									}
+								}
+							}
+						}
         }
     }
 }
