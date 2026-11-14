@@ -73,7 +73,7 @@ cd GameBundle
 ※Windows（コマンドプロンプト / PowerShell）の場合は `./gradlew` を `gradlew.bat` に置き換えてください。
 ### ビルドおよびテストの実行
 ```bash
-./gradlew check
+./gradlew build
 ```
 
 ---
@@ -114,4 +114,3 @@ HighLowゲームを開始します
 * [x] GitHub Actions を用いたプッシュ時の自動ビルド・テスト（CI）の導入
 * [ ] ミニゲームの追加（数当てゲーム、ブラックジャックなど）
 * [ ] `java.util.ServiceLoader` を用いた完全な動的プラグイン読み込みへの移行
-* [ ] GitHub Actions を用いたプッシュ時の自動ビルド・テスト（CI）の導入
