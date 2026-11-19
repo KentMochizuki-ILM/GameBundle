@@ -31,4 +31,32 @@ class InputValidatorTest {
                 () -> assertEquals(5, result.value()),
                 () -> assertNull(result.errorMessage()));
     }
+
+    @Test
+    @DisplayName("有効な境界値が正しく許容される")
+    void validateInteger_validBoundary_returnSuccess() {
+        var minResult = InputValidator.validateInteger("1", 1, 10);
+        var maxResult = InputValidator.validateInteger("10", 1, 10);
+
+        assertAll(
+                // 最小値の場合
+                () -> assertTrue(minResult.isValid()),
+                () -> assertEquals(1, minResult.value()),
+                () -> assertNull(minResult.errorMessage()),
+                // 最大値の場合
+                () -> assertTrue(maxResult.isValid()),
+                () -> assertEquals(10, maxResult.value()),
+                () -> assertNull(maxResult.errorMessage()));
+    }
+
+    @Test
+    @DisplayName("前後空白月の文字がトリムされて正しく許容される")
+    void validateInteger_withWhitespace_returnSuccess() {
+        var result = InputValidator.validateInteger(" 5 ", 1, 10);
+
+        assertAll(
+                () -> assertTrue(result.isValid()),
+                () -> assertEquals(5, result.value()),
+                () -> assertNull(result.errorMessage()));
+    }
 }
