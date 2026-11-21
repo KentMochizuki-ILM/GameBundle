@@ -45,14 +45,18 @@ public class HighLow implements GameInterface {
 
             if (checkWin(choice, currentCard, nextCard)) {
                 System.out.printf("""
+
                         -- WIN! --
                         次のカードは%dでした！
+
                         """, nextCard);
                 countWin++;
             } else {
                 System.out.printf("""
+
                         -- LOSE... --
                         次のカードは%dでした!
+
                         """, nextCard);
             }
         }
