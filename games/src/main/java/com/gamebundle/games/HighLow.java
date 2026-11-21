@@ -69,8 +69,8 @@ public class HighLow implements GameInterface {
         return deck;
     }
 
-    private void printTableInfo(int currentCard, int reminingNumber, int countWin) {
-        System.out.printf("現在のカード:%2d / 残りのカード枚数:%2d枚 / 勝利数%2d\n", currentCard, reminingNumber, countWin);
+    private void printTableInfo(int currentCard, int remainingNumber, int countWin) {
+        System.out.printf("現在のカード:%2d / 残りのカード枚数:%2d枚 / 勝利数%2d\n", currentCard, remainingNumber, countWin);
     }
 
     private boolean checkWin(int choice, int currentCard, int nextCard) {
