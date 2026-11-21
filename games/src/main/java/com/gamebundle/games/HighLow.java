@@ -44,10 +44,16 @@ public class HighLow implements GameInterface {
             int choice = input.promptInputInt(promptMessage, CHOICE_HIGH, CHOICE_LOW);
 
             if (checkWin(choice, currentCard, nextCard)) {
-                System.out.println("-- WIN! --\n");
+                System.out.printf("""
+                        -- WIN! --
+                        次のカードは%dでした！
+                        """, nextCard);
                 countWin++;
             } else {
-                System.out.println("-- LOSE... --\n");
+                System.out.printf("""
+                        -- LOSE... --
+                        次のカードは%dでした!
+                        """, nextCard);
             }
         }
 

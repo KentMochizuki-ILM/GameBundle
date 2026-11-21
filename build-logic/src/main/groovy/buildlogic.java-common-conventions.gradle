@@ -26,7 +26,7 @@ testing {
 							all{
 								testTask.configure{
 									testLogging{
-										events"passed", "failed", "skipped", "standardOut", "StandardError"
+										events "passed", "failed", "skipped", "standardOut", "standardError"
 										exceptionFormat "full"
 										showExceptions true
 										showCauses true
